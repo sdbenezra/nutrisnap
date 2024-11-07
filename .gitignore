@@ -1,0 +1,4 @@
+.idea/
+.streamlit/
+__pycache__
+env/
