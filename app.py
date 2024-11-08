@@ -10,7 +10,7 @@ import base64
 def setup_page():
     st.set_page_config(page_title="NutriSnap", page_icon="🍎", layout="wide")
     st.header("🍎 NutriSnap", anchor=False, divider="green")
-    st.write("Take a photo or upload a photo of the nutrition facts label or food item. The app will summarize the health value of your food.")
+    st.write("Take a photo or upload a photo of the nutrition facts label. The app will summarize the health value of your food.")
     st.write("**Bon Appetit!**")
     hide_menu_style = """
             <style>
@@ -69,7 +69,7 @@ def main():
 
     if option == "Take a picture":
         with col1:
-            picture = st.camera_input("Take a picture")  
+            picture = st.camera_input("Take a picture")
         with col2:
             if picture:
                 with st.spinner():

@@ -1,14 +1,14 @@
 # NutriSnap
 
-A Streamlit-powered nutrition analysis tool that uses Google's Gemini 1.5 Flash LLM model to provide personalized health insights from food and nutritional label images, with a specific focus on women's nutritional needs.
+A Streamlit-powered nutrition analysis tool that uses Google's Gemini 1.5 Flash LLM model to provide personalized health insights from nutrition label images, with a specific focus on women's nutritional needs.
 
 ## Overview
 
-NutriSnap analyzes nutrition labels and food through image capture or upload and provides clear, actionable feedback about the nutritional value of food items. Powered by Google's Gemini 1.5 Flash LLM model, it evaluates key nutrients particularly important for women's health, including iron, calcium, and folate, while offering practical alternatives for less healthy options.
+NutriSnap analyzes nutrition labels through image capture or upload and provides clear, actionable feedback about the nutritional value of food items. Powered by Google's Gemini 1.5 Flash LLM model, it evaluates key nutrients particularly important for women's health, including iron, calcium, and folate, while offering practical alternatives for less healthy options.
 
 ## Features
 
-- 📸 Image capture or upload of nutrition labels and food items
+- 📸 Image capture or upload of nutrition labels
 - 🤖 Advanced analysis using Gemini 1.5 Flash LLM
 - 👩 Women's health-focused insights
 - 📊 Visual health rating system
