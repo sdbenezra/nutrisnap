@@ -10,13 +10,8 @@ import base64
 def setup_page():
     st.set_page_config(page_title="NutriSnap", page_icon="🍎", layout="wide")
     st.header("🍎 NutriSnap", anchor=False, divider="green")
-    st.sidebar.header("About NutriSnap", divider="rainbow")
-    st.sidebar.write("1. Take a photo or upload a photo of the nutrition facts label.")
-    st.sidebar.write("2. The app will summarize the health value of your food.")
-    st.sidebar.write("**Bon Appetit!**")
-    st.sidebar.divider()
-    st.sidebar.write("HEALTH INFORMATION DISCLAIMER")
-    st.sidebar.write("This app provides educational information only, not medical advice. Nutritional needs vary by individual. Always consult your healthcare provider before making dietary changes. Do not rely on this app in place of professional medical guidance.")
+    st.write("Take a photo or upload a photo of the nutrition facts label or food item. The app will summarize the health value of your food.")
+    st.write("**Bon Appetit!**")
     hide_menu_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -24,8 +19,8 @@ def setup_page():
             """
     st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-
-model = genai.GenerativeModel("gemini-1.5-flash")
+model_version = "gemini-1.5-flash"
+model = genai.GenerativeModel(model_version)
 
 def render_svg(svg):
     """Renders the given svg string."""
@@ -41,14 +36,11 @@ def analyze_image(image):
     print("+++++++++++++++++++++++++++++++")
     print(responses)
     if ("**Overall Rating**: HEALTHY" in responses.text):
-        scale = health_scale.get_health_scale_svg(rating='healthy')
+        render_svg(health_scale.get_health_scale_svg(rating='healthy'))
     elif ("**Overall Rating**: MODERATE" in responses.text):
-        scale = health_scale.get_health_scale_svg(rating='moderate')
+        render_svg(health_scale.get_health_scale_svg(rating='moderate'))
     elif ("**Overall Rating**: LOW" in responses.text):
-        scale = health_scale.get_health_scale_svg(rating='low')
-    else:
-        st.markdown("Image is unclear, try taking the picture again.")
-    render_svg(scale)
+        render_svg(health_scale.get_health_scale_svg(rating='low'))
     st.markdown("  ")
     st.markdown(responses.text)
 
@@ -93,6 +85,23 @@ def main():
             with col2:
                 with st.spinner():
                     analyze_image(image)
+
+    st.divider()
+    st.markdown("""HEALTH INFORMATION DISCLAIMER  
+ - This app provides educational information only, not medical advice.  
+ - Nutritional needs vary by individual.  
+ - Always consult your healthcare provider before making dietary changes.  
+ - Do not rely on this app in place of professional medical guidance.""")
+    st.write("")
+    st.markdown(f"""PRIVACY NOTICE
+
+- This app is powered by Google's {model_version} model
+- Data submitted may be used by Google to improve their services
+- Free API quota usage does not guarantee data privacy
+- DO NOT SUBMIT:
+  - Sensitive information
+  - Confidential data
+  - Personal information""")
 
 
 if __name__ == '__main__':
