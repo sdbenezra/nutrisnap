@@ -4,7 +4,9 @@ A Streamlit-powered nutrition analysis tool that uses Google's Gemini 1.5 Flash 
 
 ## Overview
 
-NutriSnap analyzes nutrition labels through image capture or upload and provides clear, actionable feedback about the nutritional value of food items. Powered by Google's Gemini 1.5 Flash LLM model, it evaluates key nutrients particularly important for women's health, including iron, calcium, and folate, while offering practical alternatives for less healthy options.
+NutriSnap analyzes nutrition labels through image capture or upload and provides clear, actionable feedback about the nutritional value of food items. Powered by Google's Gemini 1.5 Flash LLM model, it evaluates key nutrients particularly important for women's health, including iron and calcium, while offering practical alternatives for less healthy options.
+
+View the running app here: https://nutri-snap.streamlit.app
 
 ## Features
 
@@ -15,12 +17,21 @@ NutriSnap analyzes nutrition labels through image capture or upload and provides
 - 🔄 Healthy alternative suggestions
 - 📝 Educational nutrition information
 
+## Requirements
+
+- Python 3.8+
+- Streamlit
+- Google Gemini 1.5 Flash API access (requires obtaining an API key [here](https://aistudio.google.com/app/apikey))
+- Additional dependencies listed in `requirements.txt`
+
 ## Installation
 
 ```bash
 git clone https://github.com/sdbenezra/nutrisnap
 cd nutrisnap
 pip install -r requirements.txt
+echo export GOOGLE_API_KEY=<your API key> >> ~/.zshrc
+source ~/.zshrc
 ```
 
 ## Running the App
@@ -46,13 +57,6 @@ NutriSnap uses a three-point rating scale to evaluate foods:
 - 🟢 **Healthy**: Nutritionally dense, beneficial for overall health
 - 🟡 **Moderate**: Some concerns but generally acceptable
 - 🔴 **Low**: Consider healthier alternatives
-
-## Requirements
-
-- Python 3.8+
-- Streamlit
-- Google Gemini 1.5 Flash API access (requires obtaining an API key [here](https://aistudio.google.com/app/apikey))
-- Additional dependencies listed in `requirements.txt`
 
 ## Disclaimer
 
